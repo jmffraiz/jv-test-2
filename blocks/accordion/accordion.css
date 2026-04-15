@@ -1,0 +1,66 @@
+/* stylelint-disable no-descending-specificity */
+
+.accordion-container .accordion-wrapper {
+  max-width: var(--section-max-width, 1200px);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.accordion details {
+  border-bottom: 1px solid var(--light-color, #e0e0e0);
+}
+
+.accordion details summary {
+  list-style: none;
+  padding: 16px 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
+  font-size: var(--body-font-size-m, 18px);
+}
+
+.accordion details summary::after {
+  content: '+';
+  font-size: 24px;
+  font-weight: 400;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+  margin-left: 16px;
+}
+
+.accordion details[open] summary::after {
+  content: '−';
+}
+
+.accordion details summary::-webkit-details-marker {
+  display: none;
+}
+
+.accordion .accordion-item-body {
+  padding: 0 0 16px;
+  font-size: var(--body-font-size-s, 16px);
+  line-height: 1.6;
+  color: var(--text-color, #333);
+}
+
+.accordion .accordion-item-body p {
+  margin: 0 0 8px;
+}
+
+.accordion .accordion-item-body ul,
+.accordion .accordion-item-body ol {
+  padding-left: 24px;
+  margin: 8px 0;
+}
+
+@media (width >= 900px) {
+  .accordion-container .accordion-wrapper {
+    padding: 0 32px;
+  }
+
+  .accordion details summary {
+    font-size: var(--body-font-size-l, 20px);
+  }
+}
