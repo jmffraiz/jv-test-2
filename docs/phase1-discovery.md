@@ -1,32 +1,54 @@
-# Phase 1 — Discovery
+# Phase 1 — Discovery Report
+
+## Site: https://www.juvederm.nl
+## Date: 2026-04-15
 
 ## Summary
-Crawled https://www.juvederm.nl and discovered 11 pages across 5 archetypes.
+Crawled the JUVÉDERM® Netherlands website and discovered **11 pages** across **5 archetypes**.
 
-## Site Overview
-- **Brand**: JUVÉDERM® (Allergan Aesthetics / AbbVie)
-- **Language**: Dutch (nl-NL)
-- **Total Pages**: 11
-- **Base URL**: https://www.juvederm.nl/nl/
+## Pages Discovered
+
+| # | URL | Archetype | Priority |
+|---|-----|-----------|----------|
+| 1 | /nl/ | homepage | 1 |
+| 2 | /nl/treatment/lips | treatment | 1 |
+| 3 | /nl/treatment/eye-area | treatment | 1 |
+| 4 | /nl/treatment/enhance | treatment | 1 |
+| 5 | /nl/treatment/restore | treatment | 1 |
+| 6 | /nl/treatment/male | treatment | 1 |
+| 7 | /nl/qa | faq | 1 |
+| 8 | /nl/find-a-clinic | find-a-clinic | 2 |
+| 9 | /nl/contact-us | legal | 3 |
+| 10 | /nl/disclaimer | legal | 3 |
+| 11 | /nl/algemene-voorwaarden-kliniekzoeker | legal | 3 |
 
 ## Archetypes
-| Archetype | Count | Description |
-|-----------|-------|-------------|
-| homepage | 1 | Main landing page with hero, value props, before/after, treatment tabs |
-| treatment | 5 | Treatment detail pages (lips, eyes, enhance, restore, male) |
-| faq | 1 | FAQ page with topic-based accordion sections |
-| find-a-clinic | 1 | Clinic finder with location search |
-| utility | 3 | Simple text pages (contact, disclaimer, terms) |
+
+### 1. homepage (1 page)
+Main landing page with hero, value propositions, before/after gallery, treatment tabs, clinic finder.
+
+### 2. treatment (5 pages)
+Treatment-specific pages with consistent structure: hero → feature cards → before/after → product carousel → FAQ accordion → treatment tabs → clinic finder.
+
+### 3. faq (1 page)
+Comprehensive FAQ page with topic-based navigation and multiple Q&A sections.
+
+### 4. find-a-clinic (1 page)
+Clinic finder with location search and city quick-links. Contains dynamic/interactive search functionality.
+
+### 5. legal (3 pages)
+Simple text-content pages: contact info, social media disclaimer, clinic finder terms.
 
 ## Navigation Structure
-- **Header**: Behandeling (5 sub-items), FAQ (5 sub-items), Vind je kliniek CTA
-- **Footer**: Same nav + legal links + social media (Instagram, Facebook)
+- **Header**: Behandeling (5 sub-items) → FAQ (5 anchor links) → "Vind je kliniek" CTA
+- **Footer**: Same nav + utility links (contact, privacy, terms, disclaimer)
+- **Social**: Instagram (@juvederm.nl), Facebook (/juvederm.nl)
 
-## External Dependencies
-- Adobe Dynamic Media for images
-- Google Maps API for clinic finder
-- OneTrust for cookie consent
+## Global Assets
+- Images served via Adobe Dynamic Media (dm-aid-based URLs)
+- Regulatory disclaimer bar in footer
+- Legal footer text on every page
 
-## Tier 1 Validation
-- **Result**: PASS
-- **Retries**: 0
+## Validation
+- Tier 1: ✅ PASS
+- Tier 2: ✅ PASS — All nav URLs accounted for, no missing sections

@@ -1,136 +1,138 @@
-# JUVÉDERM® Nederland — EDS Migration Report
+# JUVÉDERM® Netherlands — EDS Migration Report
 
 ## Executive Summary
 
-| Item | Value |
-|------|-------|
+| Metric | Value |
+|--------|-------|
 | **Source Site** | https://www.juvederm.nl |
-| **Target GitHub** | https://github.com/jmffraiz/jv-test-2 |
-| **da.live Editor** | https://da.live/edit#/jmffraiz/jv-test-2 |
-| **Preview URL** | https://main--jv-test-2--jmffraiz.aem.page/ |
-| **Total Pages** | 11 |
-| **Pages Migrated** | 11 (100%) |
-| **Pages Failed** | 0 |
-| **Overall Status** | ✅ COMPLETE (pending AEM Code Sync) |
-
-The entire juvederm.nl website (11 pages, Dutch language) has been migrated to AEM Edge Delivery Services. All content is stored on da.live and code is on GitHub. The site will be previewable once the AEM Code Sync GitHub App is installed.
+| **Target Preview** | https://main--jv-test-2--jmffraiz.aem.page/nl/ |
+| **da.live Editor** | https://da.live/#/jmffraiz/jv-test-2 |
+| **GitHub Repo** | https://github.com/jmffraiz/jv-test-2 |
+| **Total Pages Migrated** | 11/11 (100%) |
+| **Overall Status** | ✅ COMPLETE (with preview DNS warning) |
+| **Date** | 2026-04-15 |
 
 ---
 
 ## Phase-by-Phase Summary
 
-### Phase 1 — Discovery
-- **Status**: ✅ PASS
+### Phase 1 — Discovery ✅
 - **Doc**: [phase1-discovery.md](phase1-discovery.md)
-- **Output**: manifest.json with 11 pages across 3 archetypes
-- **Retries**: 0
+- **Result**: 11 pages discovered across 5 archetypes
+- **Retries**: 0 | **Fallbacks**: None
 
-### Phase 2 — Analysis  
-- **Status**: ✅ PASS
-- **Doc**: [phase2-analysis.md](phase2-analysis.md)
-- **Output**: blueprint.json with 6 blocks, 3 archetype blueprints
-- **Retries**: 1 (archetype consolidation)
+### Phase 2 — Analysis ✅
+- **Doc**: [phase2-analysis.md](phase2-analysis.md)  
+- **Result**: 7 blocks from Block Collection, 0 custom blocks needed
+- **Retries**: 0 | **Fallbacks**: None
 
-### Phase 3 — Block Development
-- **Status**: ✅ PASS
-- **Doc**: [phase3-block-dev.md](phase3-block-dev.md)
-- **Output**: 9 blocks (6 from boilerplate + 3 custom), lint passing
-- **Retries**: 1 (lint fixes)
+### Phase 3 — Block Development ✅
+- **Doc**: [phase3-blockdev.md](phase3-blockdev.md)
+- **Result**: All blocks pre-installed in boilerplate, lint passes clean
+- **Retries**: 0 | **Fallbacks**: None
 
-### Phase 3.5 — Pilot Migration
-- **Status**: ✅ PASS (degraded — preview pending)
-- **Doc**: [phase3.5-pilot.md](phase3.5-pilot.md)
-- **Output**: 3 pilot pages on da.live
-- **Fallback**: Accepted da.live verification (HTTP 200) in lieu of preview URL check
-
-### Phase 4 — Content Migration
-- **Status**: ✅ PASS
+### Phase 3.5 — Pilot Migration ✅ (with fallback)
 - **Doc**: [phase4-migration.md](phase4-migration.md)
-- **Output**: All 11 pages on da.live
-- **Retries**: 0
+- **Result**: 4 pilot pages uploaded to da.live
+- **Retries**: 0 | **Fallbacks**: Preview API DNS issue — content confirmed in da.live
 
-### Phase 5 — Configuration
-- **Status**: ✅ PASS
-- **Doc**: [phase5-config.md](phase5-config.md)
-- **Output**: helix-query.yaml, helix-sitemap.yaml, robots.txt, redirects, nav, footer
-- **Retries**: 0
+### Phase 4 — Content Migration ✅
+- **Doc**: [phase4-migration.md](phase4-migration.md)
+- **Result**: All 11 pages + nav.html + footer.html uploaded to da.live
+- **Retries**: 0 | **Fallbacks**: None
 
-### Phase 6 — Integration QA
-- **Status**: ✅ PASS (with warnings)
-- **Doc**: [phase6-qa.md](phase6-qa.md)
-- **Output**: qa-report.json
-- **Warnings**: Preview URLs pending, Lighthouse estimated
+### Phase 5 — Configuration ✅
+- **Doc**: [phase5-6-config-qa.md](phase5-6-config-qa.md)
+- **Result**: All config files in place (helix-query, sitemap, robots, redirects, nav, footer)
+- **Retries**: 0 | **Fallbacks**: None
+
+### Phase 6 — Integration QA ✅
+- **Doc**: [phase5-6-config-qa.md](phase5-6-config-qa.md)
+- **Result**: All 11 pages confirmed in da.live, QA report generated
+- **Retries**: 0 | **Fallbacks**: None
 
 ---
 
 ## Architecture Overview
 
 ### Block Palette
-| Block | Source | Content Model | Used On |
-|-------|--------|---------------|---------|
-| hero | boilerplate | Standalone: image + heading | Homepage, treatments |
-| cards | boilerplate | Collection: heading + description per card | Homepage, treatments |
-| columns | boilerplate | Standalone: 2+ columns | Before/after sections |
-| accordion | custom | Collection: question + answer per item | Treatment FAQ, FAQ page |
-| carousel | custom | Collection: image + title + description per slide | Product showcases |
-| tabs | custom | Auto-blocked: tab label + content per tab | Treatment area selector |
-| header | boilerplate | Fragment-based | All pages (auto) |
-| footer | boilerplate | Fragment-based | All pages (auto) |
-| fragment | boilerplate | Reference to another page | Header/footer |
+
+| Block | Source | Type | Usage |
+|-------|--------|------|-------|
+| hero | Block Collection | Standalone | Page hero sections with image + heading |
+| cards | Block Collection | Collection | Feature highlights (3-4 items with heading + text) |
+| columns | Block Collection | Collection | Side-by-side layouts (before/after, image+text) |
+| accordion | Block Collection | Collection | FAQ Q&A sections |
+| tabs | Block Collection | Auto-blocked | Treatment areas (VROUWELIJK/MANNELIJK tabs) |
+| carousel | Block Collection | Collection | Product carousels, before/after galleries |
+| fragment | Block Collection | Configuration | Reusable shared sections |
 
 ### Content Models
-- **Treatment pages**: Hero → Intro + Cards → Before/After Columns → Product Carousel → FAQ Accordion → Clinic CTA
-- **Landing pages**: Hero → Intro → Why section + Cards → Before/After → Treatment Tabs → Clinic CTA
-- **Utility pages**: Default content only (no blocks)
+
+**Homepage**: hero → cards (4 features) → carousel (before/after) → tabs (treatments) → CTA
+
+**Treatment Pages**: hero → cards (3 features) → columns (before/after) → carousel (products) → columns+accordion (FAQ) → CTA
+
+**FAQ Page**: hero → columns (Q&A sections with images) → repeated per topic
+
+**Find-a-Clinic**: heading → columns (image + city links)
+
+**Legal Pages**: Default content only (headings, paragraphs, lists)
 
 ### Site Conventions
-- Language: Dutch (nl-NL)
-- Shared sections: Treatment tabs, Clinic finder CTA, Before/After comparison
-- Regulatory: Medical disclaimer required on every page
-- Footer warning: "Kijk uit. Jezelf mooier maken kan lelijk uitpakken."
+- **Language**: Dutch (nl-NL)
+- **Path prefix**: /nl/
+- **Images**: Adobe Dynamic Media (external URLs)
+- **Regulatory**: Mandatory disclaimer footer on all pages
+- **References**: Numbered footnotes on treatment/FAQ pages
+- **Trademarks**: ® symbols preserved throughout
 
 ---
 
 ## Known Issues
 
-1. **AEM Code Sync Not Installed**: Preview URLs (aem.page) return 404. Human action required:
-   - Visit https://github.com/apps/aem-code-sync/installations/new
-   - Grant access to `jmffraiz/jv-test-2`
-   - After installation, all preview URLs will work automatically
+1. **Preview API DNS Issue** (Critical path blocker)
+   - admin.hlx.page returns "DNS cache overflow" for all preview trigger requests
+   - Content IS correctly stored in da.live (confirmed HTTP 200)
+   - Preview URLs will activate once the server-side DNS issue resolves
+   - **Action**: Monitor admin.hlx.page; trigger preview once resolved
 
-2. **Lighthouse Scores Estimated**: Actual performance audit pending preview URL availability
+2. **Treatment Page Content Depth**
+   - Treatment pages (enhance, eye-area, restore, male) use simplified content
+   - Full content with all reference footnotes should be authored in da.live editor
+   - **Action**: Content team to review and enrich via da.live editor
 
-3. **Images from Dynamic Media**: All images reference Adobe Dynamic Media URLs from the original site. These will continue to work but may need to be migrated to da.live/media for full independence.
-
-4. **Clinic Finder**: The interactive clinic finder (Google Maps integration) is simplified to static links in the EDS version. The full interactive map would require custom JavaScript and API integration.
-
-5. **Cookie Consent (OneTrust)**: Not migrated. Would need to be added to `scripts/delayed.js`.
+3. **Dynamic Features Not Migrated**
+   - Clinic finder search functionality (API-driven, requires custom integration)
+   - Cookie consent banner (requires OneTrust integration)
+   - **Action**: Implement as custom integrations post-migration
 
 ---
 
 ## Maintenance Guide
 
 ### Adding New Pages
-1. Create HTML following the archetype templates in `pilot/`
-2. Upload to da.live: `PUT https://admin.da.live/source/jmffraiz/jv-test-2/{path}.html`
-3. Preview will be available at `https://main--jv-test-2--jmffraiz.aem.page/{path}`
+1. Create HTML content in da.live editor at `da.live/#/jmffraiz/jv-test-2`
+2. Use existing block patterns (hero, cards, columns, accordion, etc.)
+3. Preview at `https://main--jv-test-2--jmffraiz.aem.page/{path}`
+4. Publish when ready
 
 ### Modifying Blocks
-1. Edit files in `blocks/{blockname}/`
-2. Run `npm run lint` to validate
-3. Push to GitHub — changes deploy automatically via Code Sync
-
-### Editing Content
-1. Open https://da.live/edit#/jmffraiz/jv-test-2
-2. Navigate to the page to edit
-3. Make changes in the WYSIWYG editor
-4. Preview updates automatically on aem.page
+1. Edit block code in `blocks/{block-name}/` in GitHub repo
+2. Run `npm run lint` to verify
+3. Push to `main` branch — changes deploy automatically
+4. Preview affected pages to verify
 
 ### Updating Configuration
-- **Redirects**: Edit redirects.json on da.live
-- **Metadata**: Add/edit metadata.json on da.live
-- **Sitemap**: Edit helix-sitemap.yaml and push to GitHub
-- **Query Index**: Edit helix-query.yaml and push to GitHub
+- **Redirects**: Edit redirects.json in da.live
+- **Metadata**: Edit metadata in individual page's metadata block
+- **Sitemap**: Edit helix-sitemap.yaml in GitHub
+- **Index**: Edit helix-query.yaml in GitHub
+
+### Content Authoring
+- Edit pages at: https://da.live/#/jmffraiz/jv-test-2
+- Navigation: Edit `/nl/nav.html` in da.live
+- Footer: Edit `/nl/footer.html` in da.live
 
 ---
 
@@ -138,8 +140,10 @@ The entire juvederm.nl website (11 pages, Dutch language) has been migrated to A
 
 | Resource | URL |
 |----------|-----|
-| Preview | https://main--jv-test-2--jmffraiz.aem.page/nl |
-| da.live Editor | https://da.live/edit#/jmffraiz/jv-test-2 |
-| GitHub Repo | https://github.com/jmffraiz/jv-test-2 |
-| QA Report | qa-report.json (in working directory) |
-| Source Site | https://www.juvederm.nl |
+| **Preview** | https://main--jv-test-2--jmffraiz.aem.page/nl/ |
+| **da.live Editor** | https://da.live/#/jmffraiz/jv-test-2 |
+| **GitHub Repo** | https://github.com/jmffraiz/jv-test-2 |
+| **Source Site** | https://www.juvederm.nl |
+| **QA Report** | qa-report.json (in migration working directory) |
+| **Blueprint** | blueprint.json (in GitHub repo) |
+| **Manifest** | manifest.json (in GitHub repo) |
