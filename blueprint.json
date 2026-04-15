@@ -1,0 +1,245 @@
+{
+  "blockPalette": [
+    {
+      "name": "hero",
+      "source": "block-collection",
+      "description": "Full-width hero section with large background image, heading, subheading, and optional CTA buttons",
+      "contentModel": "standalone",
+      "usage": "Top section of homepage and treatment pages with large imagery and brand messaging",
+      "liveExampleUrl": "https://main--aem-block-collection--adobe.aem.live/block-collection/hero"
+    },
+    {
+      "name": "cards",
+      "source": "block-collection",
+      "description": "Grid of content items, each with icon/image, heading, and description text",
+      "contentModel": "collection",
+      "usage": "Feature/benefit highlights on homepage (natural results, leading brand, lasting results, satisfaction) and treatment pages (3 feature cards)",
+      "liveExampleUrl": "https://main--aem-block-collection--adobe.aem.live/block-collection/cards"
+    },
+    {
+      "name": "columns",
+      "source": "block-collection",
+      "description": "Side-by-side content layout in 2-3 columns",
+      "contentModel": "collection",
+      "usage": "Before/after image comparisons, image + text layouts on treatment and FAQ pages",
+      "liveExampleUrl": "https://main--aem-block-collection--adobe.aem.live/block-collection/columns"
+    },
+    {
+      "name": "accordion",
+      "source": "block-collection",
+      "description": "Expandable/collapsible content sections for Q&A patterns",
+      "contentModel": "collection",
+      "usage": "FAQ sections on treatment pages and the main FAQ page; each item has a question heading and answer text",
+      "liveExampleUrl": "https://main--aem-block-collection--adobe.aem.live/block-collection/accordion"
+    },
+    {
+      "name": "tabs",
+      "source": "block-collection",
+      "description": "Tabbed interface switching between content panels",
+      "contentModel": "auto-blocked",
+      "usage": "Treatment areas section (VROUWELIJK/MANNELIJK tabs) appearing on homepage and all treatment pages",
+      "liveExampleUrl": "https://main--aem-block-collection--adobe.aem.live/block-collection/tabs"
+    },
+    {
+      "name": "carousel",
+      "source": "block-collection",
+      "description": "Horizontal scrollable/rotating content items",
+      "contentModel": "collection",
+      "usage": "Product carousel on treatment pages showing JUVÉDERM product range (VOLBELLA, VOLIFT, VOLUMA, ULTRA, etc.)",
+      "liveExampleUrl": "https://main--aem-block-collection--adobe.aem.live/block-collection/carousel"
+    },
+    {
+      "name": "fragment",
+      "source": "block-collection",
+      "description": "Reusable content section that can be embedded across multiple pages",
+      "contentModel": "configuration",
+      "usage": "Shared treatment-areas tabs section, shared clinic-finder CTA section, shared references/footnotes",
+      "liveExampleUrl": "https://main--aem-block-collection--adobe.aem.live/block-collection/fragment"
+    }
+  ],
+  "archetypeBlueprints": {
+    "homepage": [
+      {
+        "name": "homepage-template",
+        "sections": [
+          {
+            "name": "hero",
+            "style": "light",
+            "sequences": ["hero"]
+          },
+          {
+            "name": "why-juvederm",
+            "style": "light",
+            "sequences": ["default", "cards"]
+          },
+          {
+            "name": "before-after",
+            "style": "light",
+            "sequences": ["default", "carousel"]
+          },
+          {
+            "name": "treatment-areas",
+            "style": "light",
+            "sequences": ["default", "tabs"]
+          },
+          {
+            "name": "clinic-finder",
+            "style": "light",
+            "sequences": ["default"]
+          },
+          {
+            "name": "references",
+            "style": "light",
+            "sequences": ["default"]
+          }
+        ]
+      }
+    ],
+    "treatment": [
+      {
+        "name": "treatment-template",
+        "sections": [
+          {
+            "name": "hero",
+            "style": "light",
+            "sequences": ["hero"]
+          },
+          {
+            "name": "intro-features",
+            "style": "light",
+            "sequences": ["default", "cards"]
+          },
+          {
+            "name": "before-after",
+            "style": "light",
+            "sequences": ["default", "columns"]
+          },
+          {
+            "name": "products",
+            "style": "light",
+            "sequences": ["default", "carousel"]
+          },
+          {
+            "name": "faq",
+            "style": "light",
+            "sequences": ["default", "columns", "accordion"]
+          },
+          {
+            "name": "treatment-areas",
+            "style": "light",
+            "sequences": ["default", "tabs"]
+          },
+          {
+            "name": "clinic-finder",
+            "style": "light",
+            "sequences": ["default"]
+          },
+          {
+            "name": "references",
+            "style": "light",
+            "sequences": ["default"]
+          }
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "name": "faq-template",
+        "sections": [
+          {
+            "name": "hero",
+            "style": "light",
+            "sequences": ["hero"]
+          },
+          {
+            "name": "about-juvederm",
+            "style": "light",
+            "sequences": ["default", "columns"]
+          },
+          {
+            "name": "preparation",
+            "style": "light",
+            "sequences": ["default", "columns"]
+          },
+          {
+            "name": "expectations",
+            "style": "light",
+            "sequences": ["default", "columns"]
+          },
+          {
+            "name": "costs-results",
+            "style": "light",
+            "sequences": ["default", "columns"]
+          },
+          {
+            "name": "facial-areas",
+            "style": "light",
+            "sequences": ["default", "columns"]
+          },
+          {
+            "name": "references",
+            "style": "light",
+            "sequences": ["default"]
+          }
+        ]
+      }
+    ],
+    "find-a-clinic": [
+      {
+        "name": "find-a-clinic-template",
+        "sections": [
+          {
+            "name": "hero",
+            "style": "light",
+            "sequences": ["default"]
+          },
+          {
+            "name": "search",
+            "style": "light",
+            "sequences": ["default", "columns"]
+          }
+        ]
+      }
+    ],
+    "legal": [
+      {
+        "name": "legal-template",
+        "sections": [
+          {
+            "name": "content",
+            "style": "light",
+            "sequences": ["default"]
+          }
+        ]
+      }
+    ]
+  },
+  "siteConventions": {
+    "language": "nl",
+    "locale": "nl-NL",
+    "pathPrefix": "/nl/",
+    "brand": "JUVÉDERM®",
+    "parentBrand": "Allergan Aesthetics (AbbVie)",
+    "primaryColor": "#8B2346",
+    "backgroundColor": "#FFFFFF",
+    "typography": "Custom sans-serif fonts",
+    "navigation": {
+      "header": "Two dropdown menus (Behandeling, FAQ) + CTA button (Vind je kliniek)",
+      "footer": "Mirrored nav + utility links + social links + regulatory disclaimer"
+    },
+    "sharedSections": {
+      "treatmentAreasTabs": "VROUWELIJK/MANNELIJK tabs with treatment links - appears on homepage and all treatment pages",
+      "clinicFinder": "Location search CTA - appears on homepage and all treatment pages",
+      "regulatoryDisclaimer": "Required regulatory footer text on all pages",
+      "references": "Numbered reference list (footnotes) on treatment and FAQ pages"
+    },
+    "imageSource": "Adobe Dynamic Media (dm-aid URLs with preferwebp=true&quality=85)",
+    "contentNotes": [
+      "Medical/pharmaceutical content requires careful preservation of reference numbers",
+      "Footnote markers (superscript numbers) must be preserved in content",
+      "Regulatory disclaimer text is mandatory on all pages",
+      "Before/after images must include Voor/Na labels",
+      "Product names include trademark symbols (®)"
+    ]
+  }
+}
