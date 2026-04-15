@@ -1,0 +1,9 @@
+version: 1
+sitemaps:
+  default:
+    origin: https://www.juvederm.nl
+    include:
+      - /nl/**
+    exclude:
+      - /nl/drafts/**
+    target: /sitemap.xml
